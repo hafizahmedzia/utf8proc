@@ -521,11 +521,15 @@ UTF8PROC_DLLEXPORT const utf8proc_property_t *utf8proc_get_property(utf8proc_int
  * @param dst the destination buffer.
  * @param bufsize the size of the destination buffer.
  * @param options one or more of the following flags:
+ * - @ref UTF8PROC_COMPOSE   - apply canonical decomposition (not composition
+ *                             within this function)
+ * - @ref UTF8PROC_DECOMPOSE - apply canonical decomposition
  * - @ref UTF8PROC_REJECTNA  - return an error if `codepoint` is unassigned
  * - @ref UTF8PROC_IGNORE    - strip "default ignorable" codepoints
  * - @ref UTF8PROC_CASEFOLD  - apply Unicode casefolding
  * - @ref UTF8PROC_COMPAT    - replace certain codepoints with their
- *                             compatibility decomposition
+ *                             compatibility decomposition; requires
+ *                             @ref UTF8PROC_COMPOSE or @ref UTF8PROC_DECOMPOSE
  * - @ref UTF8PROC_CHARBOUND - insert 0xFF bytes before each grapheme cluster
  * - @ref UTF8PROC_LUMP      - lump certain different codepoints together
  * - @ref UTF8PROC_STRIPMARK - remove all character marks
